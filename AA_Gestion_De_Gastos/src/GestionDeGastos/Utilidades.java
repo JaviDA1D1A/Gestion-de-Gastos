@@ -1,5 +1,10 @@
 package GestionDeGastos;
 
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -51,7 +56,7 @@ public class Utilidades {
 		System.out.println("===Todos los Gastos===");
 
 		if (listaGastos.isEmpty()) {
-			System.out.println("===Listas vacia===");
+			System.out.println("===Lista vacia===\n");
 		} else {
 
 			for (int i = 0; i < listaGastos.size(); i++) {
@@ -101,7 +106,20 @@ public class Utilidades {
 	}
 
 	public static void mostrarEnFichero(ArrayList<Gastos> listaGastos) {
-
+	    
+	    try (PrintWriter escritor = new PrintWriter(new FileWriter("Resumen.txt"))) {
+	        
+	        escritor.println("===LISTADO DE GASTOS===");
+	        
+	        for (Gastos g : listaGastos) {
+	            escritor.println(g.toString()); 
+	         
+	        }
+	        System.out.println("Fichero de texto creado correctamente.");
+	        
+	    } catch (IOException e) {
+	        System.out.println("Error al escribir el fichero de texto: " + e.getMessage());
+	    }
 	}
 
 }

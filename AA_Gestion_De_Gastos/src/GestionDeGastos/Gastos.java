@@ -1,7 +1,14 @@
 package GestionDeGastos;
 
-public class Gastos {
+import java.io.Serializable;
 
+public class Gastos implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String MotivoGasto;
 	private double Cantidad;
 	private String fecha;
